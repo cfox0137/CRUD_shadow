@@ -1,40 +1,29 @@
-import React from 'react';
+import React from "react";
 
+const Form = ({ inputText, setInputText, myBooks, setMyBooks }) => {
+  const inputTextHandler = (e) => {
+    setInputText(e.target.value);
+  };
 
-const Form = ({inputText, setInputText, myBooks, setMyBooks}) => {
+  const submitABook = (e) => {
+    e.preventDefault();
 
-    const inputTextHandler = (e) => {
+    setMyBooks([...myBooks, { text: inputText, id: Math.random() * 100 }]);
 
-        console.log(e.target.value);
-        setInputText(e.target.value);
-    
-    }
+    setInputText("");
+  };
 
-    const submitABook = (e) => {
-        e.preventDefault();
-        setMyBooks ([
-            ...myBooks, { text: inputText, id: Math.random()*100}
-        ])
-        setInputText('');
-
-    }
-
-return ( 
-<form>
-
-<input value={inputText} type="text" onChange={inputTextHandler}></input>
-<button onClick={submitABook}>Add</button>
-
-</form>
-
-)
-
-
-}
-
-
-
-
-
+  return (
+    <form>
+      <input
+        value={inputText}
+        type="text"
+        onChange={inputTextHandler}
+        placeholder="Add a book title"
+      ></input>
+      <button onClick={submitABook}>Add</button>
+    </form>
+  );
+};
 
 export default Form;

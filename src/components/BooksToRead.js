@@ -1,28 +1,23 @@
-import React from 'react';
-import Book from './Book';
+import React from "react";
+import Book from "./Book";
 
+const BooksToRead = ({ myBooks, setMyBooks, }) => {
 
-const BooksToRead = ({myBooks}) => { 
+  return (
+    <div>
+      { myBooks.map((book) => (
+        <Book
+          myBooks={myBooks}
+          setMyBooks={setMyBooks}
+          text={book.text}
+          key={book.id}
+          book={book}
+        />
+      ))}
 
-    console.log(myBooks)
-
-
-
-    return (
-
-        <div>
-       
-       {myBooks.map(myBooks => (
-           <Book text={myBooks.text} key={myBooks.id}/>
-       ))}
-
-        <br/>
-        </div>
-
-    );
-
-
+      <br />
+    </div>
+  );
 };
-
 
 export default BooksToRead;
